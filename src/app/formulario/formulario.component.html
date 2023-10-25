@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="formUser" class="form-horizontal" (ngSubmit)="procesar()" (ngSubmit)="guardar()">
+            <div class="form-group row">
+                <label for="cedula" class="col-sm-2 col-form-label">Cédula</label>
+                <div class="col-sm-4">
+                    <input type="number" formControlName="cc" class="form-control" id="cedula" placeholder="Ingrese su numero de identificación" >
+                    <div class="alert alert-danger mt-2" [hidden]="cc.valid || cc.pristine">
+                        El numero de documento es obligatorio
+                    </div>
+                </div>
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-4">
+                    <input type="text" formControlName="name" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                    <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine">
+                        El nombre es obligatorio
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="apellido1" class="col-sm-2 col-form-label">Apellido1</label>
+                <div class="col-sm-4">
+                    <input type="text" formControlName="apellido1" class="form-control" id="apellido1" placeholder="Ingrese su primer apellido">
+                    <div class="alert alert-danger mt-2" [hidden]="apellido1.valid || apellido1.pristine">
+                        El apellido es obligatorio
+                    </div>
+                </div>
+                <label for="apellido2" class="col-sm-2 col-form-label">Apellido2</label>
+                <div class="col-sm-4">
+                    <input type="text" formControlName="apellido2" class="form-control" id="apellido2" placeholder="Ingrese su segundo apellido">
+                    <div class="alert alert-danger mt-2" [hidden]="apellido2.valid || apellido2.pristine">
+                        El apellido es obligatorio
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="edad" class="col-sm-2 col-form-label">Edad</label>
+                <div class="col-sm-4">
+                    <input type="number" formControlName="edad" class="form-control" id="edad" placeholder="Ingrese su edad">
+                    <div class="alert alert-danger mt-2" [hidden]="edad.valid || edad.pristine">
+                        La Edad es obligatorio
+                    </div>
+                </div>
+                <label for="genero" class="col-sm-2 col-form-label">Género</label>
+                <div class="col-sm-4">
+                    <input type="text" formControlName="genero" class="form-control" id="genero" placeholder="Ingrese su género" list="listGenero">
+                    <datalist id="listGenero">
+                        <option value="Masculino"></option>
+                        <option value="Femenino"></option>
+                    </datalist>
+                    <div class="alert alert-danger mt-2" [hidden]="genero.valid || genero.pristine">
+                        El genero es obligatorio
+                    </div>
+                </div>
+            </div>
+    
+            <button class="btn btn-primary mt-3" [disabled]="formUser.invalid" (click)="guardar">Guardar</button>
+            <div class="alert alert-info  mt-4" *ngIf="openAlert">
+                <p>Mensaje Enviado</p>
+                <button class="btn btn-light" (click)="openAlert=false">
+                    X
+                </button>
+            </div>
+            <button class="btn btn-secondary mt-3" style="margin-left: 10px" (click)="cancelar" >Cancelar</button>
+        </form>
+    </div>
+</div>

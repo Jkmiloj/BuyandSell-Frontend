@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-body">
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 class="font-weight-bold" style="font-size: 30px">Personas registradas</h1>
+            </div>
+        
+
+            <div class="col-sm-6 text-right" style="text-align: right">
+                <button class="btn btn-success" (click)="agregarPersona()">Agregar Persona</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table mt-3" *ngIf="personas.length > 0">
+    <thead>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Apellido1</th>
+            <th>Apellido2</th>
+            <th>Edad</th>
+            <th>Género</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let persona of personas">
+            <td>{{ persona.cc }}</td>
+            <td>{{ persona.name }}</td>
+            <td>{{ persona.apellido1 }}</td>
+            <td>{{ persona.apellido2 }}</td>
+            <td>{{ persona.edad }}</td>
+            <td>{{ persona.genero }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr size="8px" class="mt-5" style="border-color: gray;">
+
