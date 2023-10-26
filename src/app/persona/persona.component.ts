@@ -13,13 +13,17 @@ export class PersonaComponent implements OnInit {
 
   personas!: Persona[];
 
-  constructor(private personaService: PersonaService, private router: Router, private route: ActivatedRoute){}
+  mostrarFormulario = false;
+
+  constructor(public personaService: PersonaService, private router: Router, private route: ActivatedRoute){
+    this.personas = personaService.obtenerPersonas();
+  }
 
   ngOnInit(): void {
-      this.personaService.getPersonas().subscribe((data)=>{
+      /*this.personaService.obtenerPersonas().subscribe((data: Persona[])=>{
         this.personas = data;
-      });
-      this.route.queryParams.subscribe((params) => {
+      });*/
+      /*this.route.queryParams.subscribe((params) => {
         if (params['cc'] && params['name'] && params['apellido1'] && params['apellido2'] && params['edad'] && params['genero']) {
           this.personas.push({
             cc: params['cc'],
@@ -30,16 +34,20 @@ export class PersonaComponent implements OnInit {
             genero: params['genero'],
           });
         }
-      });
+      });*/
   }
 
-  agregarPersona(){
+  /*agregarPersona(){
     this.router.navigate(['/formulario']);
     
-  }
+  }*/
 
   actualizarTabla(persona: Persona) {
     this.personas.push(persona);
+  }
+
+  toggleFormulario() {
+    this.mostrarFormulario = !this.mostrarFormulario;
   }
 
 }

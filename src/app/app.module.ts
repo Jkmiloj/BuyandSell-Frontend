@@ -6,6 +6,7 @@ import { PersonaComponent } from './persona/persona.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PersonaService } from './persona.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule
   ],
 
-  providers: [],
+  providers: [PersonaService],
   bootstrap: [AppComponent]
 
 })

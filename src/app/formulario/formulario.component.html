@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <form [formGroup]="formUser" class="form-horizontal" (ngSubmit)="procesar()" (ngSubmit)="guardar()">
+        <form [formGroup]="formUser" class="form-horizontal" (ngSubmit)="guardar()">
             <div class="form-group row">
                 <label for="cedula" class="col-sm-2 col-form-label">Cédula</label>
                 <div class="col-sm-4">
@@ -54,14 +54,17 @@
                 </div>
             </div>
     
-            <button class="btn btn-primary mt-3" [disabled]="formUser.invalid" (click)="guardar">Guardar</button>
+            <button class="btn btn-primary mt-3" [disabled]="formUser.invalid">Guardar</button>
             <div class="alert alert-info  mt-4" *ngIf="openAlert">
-                <p>Mensaje Enviado</p>
+                <p>Datos enviados con exito</p>
                 <button class="btn btn-light" (click)="openAlert=false">
                     X
                 </button>
             </div>
-            <button class="btn btn-secondary mt-3" style="margin-left: 10px" (click)="cancelar" >Cancelar</button>
+
+            <button class="btn btn-secondary mt-3" style="margin-left: 10px" (click)="cancelar()" >Cancelar</button>
+        
+
         </form>
     </div>
 </div>

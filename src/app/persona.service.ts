@@ -7,13 +7,6 @@ import { Persona } from './persona'; // Importa la interfaz Persona
     providedIn: 'root',
 })
 export class PersonaService {
-  private apiUrl = 'http://localhost:4200/personas'; // Reemplaza 'URL_DEL_SERVIDOR' con la URL de tu servidor
-
-    constructor(private http: HttpClient) {}
-
-    getPersonas(): Observable<Persona[]> {
-        return this.http.get<Persona[]>(this.apiUrl);
-    }
 
     private personas: Persona[] = [];
 

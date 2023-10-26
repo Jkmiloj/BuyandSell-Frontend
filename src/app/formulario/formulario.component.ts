@@ -14,9 +14,9 @@ export class FormularioComponent {
 
   @Output() agregarPersona: EventEmitter<Persona> = new EventEmitter<Persona>(); 
   @Output() cancel = new EventEmitter<void>();
-  
+
   openAlert: boolean = false;
-  constructor(private fb: FormBuilder, private router: Router, private personaService: PersonaService){ }
+  constructor(private fb: FormBuilder, private router: Router, public personaService: PersonaService){ }
 
   get cc(){
     return this.formUser.get('cc') as FormControl;
@@ -51,10 +51,10 @@ export class FormularioComponent {
     'genero' : [null, Validators.required]
   });
   
-  procesar(){
+  /*procesar(){
     console.log(this.formUser.value);
     this.openAlert=true;
-  }
+  }*/
 
   guardar(){
     const formData = this.formUser.value;
@@ -79,10 +79,14 @@ export class FormularioComponent {
     // Llama al servicio para guardar la nueva persona
     this.personaService.guardarPersona(nuevaPersona);
 
-    this.router.navigate(['/persona'], { queryParams: this.formUser.value });
+    /*this.router.navigate(['/persona'], { queryParams: this.formUser.value });*/
+    this.formUser.reset();
+    this.openAlert=true;
+
   }
 
   cancelar(){
-    this.router.navigate(['/persona']);
+    this.openAlert=false;
+    this.router.navigate(['/persona']);  
   }
 }
